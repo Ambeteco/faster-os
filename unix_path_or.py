@@ -15,10 +15,10 @@ except ImportError:
         empty = ''
         dot = '.'
         dotdot = '..'
-        
+
         if not path:
             return '.'
-            
+
         initial_slashes = path.startswith('/')
 
         if (initial_slashes and
@@ -71,10 +71,10 @@ def split(path):
 
     if last_slash == -1:
         return '', path
-     
+
     if last_slash == 0:
         return '/', path[1:]
-        
+
     base = path[:last_slash]
     tail = path[last_slash + 1:]
 
@@ -126,24 +126,24 @@ def expanduser(path):
             os.environ.get('HOMEPATH'),
             os.environ.get('HOME'),
         ]
-        
+
         try:
             home = list(filter(bool, home))[0]
         except:
             home = f'/home/{os.environ.get("USERNAME")}'
 
         return f'{home}/{path[2:]}'
-    
+
     if path.startswith('~'):
         sep_loc = path.find('/')
         username = path[1:None if sep_loc == -1 else sep_loc]     
-        
+
         try:
             user_path = pwd.getpwnam(username).pw_dir
             return f'{user_path}{path[len(username) + 1:]}'
         except:
             return path
-        
+
     return path
 
 
@@ -152,7 +152,7 @@ def expanduser(path):
 def relpath(tail, root=None):
     if root is None:
         root = os.getcwd()
-    
+
     if not root:
         return f'{"/.." * (tail.count("/") + 1)}{tail}'[1:]
 
@@ -195,7 +195,7 @@ def commonpath(paths, lower=False):
         if path != path2:
             if min_splitted[:index] == ['']:
                 return '/'
-                
+
             result = '/'.join(min_splitted[:index])
             return result
 

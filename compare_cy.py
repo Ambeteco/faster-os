@@ -4,7 +4,7 @@ if platform.system() == 'Windows':
 	from test_paths import join_paths, valid_list_paths, rel_paths, norm_paths
 else:
 	from unix_test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
-	
+
 import timeit
 import faster_os
 import faster_os_cy
