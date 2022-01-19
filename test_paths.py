@@ -39,6 +39,22 @@ valid_list_paths = [
         'C:\\HELLO WORLD\\SOME PATH\\',
     ],
     [
+        'C:\\HELLO WORLD\\SOME PATH',
+        'C:\\HELLO WORLD\\SOME',
+    ],
+    [
+        'C:\\HELLO WORLD\\SOME PATH',
+        'C:\\HELLO \\SOME',
+    ],
+    [
+        'C:\\HELLO WORLD\\SOME PATH',
+        'C:\\HELLO WORLD\\SOrME',
+    ],
+    [
+        'C:\\HELLO WORLD\\SOME PATH',
+        'C:\\HELLO WORLD\\SOME PATH\\',
+    ],
+    [
         '\\\\HOST-NAME\\SHARE-NAME\\FILE_PATH',
         '\\\\HOST-NAME\\SHARE-NAME\\SOME\\LONG\\FILE\\PATH',
     ],
@@ -70,6 +86,18 @@ list_paths = [
     [
         'C:\\HELLO WORLD\\SOME PATH',
         'C:\\HELLO WORLD\\SOME PATH\\',
+    ],
+    [
+        'C:\\HELLO WORLD\\SOME PATH',
+        'C:\\HELLO WORLD\\SOME',
+    ],
+    [
+        'C:\\HELLO WORLD\\SOME PATH',
+        'C:\\HELLO \\SOME',
+    ],
+    [
+        'C:\\HELLO WORLD\\SOME PATH',
+        'C:\\HELLO WORLD\\SOrME',
     ],
     [
         'C:\\123//123/123/1221\\33',

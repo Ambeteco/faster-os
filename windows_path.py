@@ -1,5 +1,3 @@
-import genericpath
-
 try:
     from nt import _path_normpath
 except ImportError:
@@ -44,12 +42,6 @@ else:
 
     def normpath(path):
         return _path_normpath(path) or "."
-
-
-try:
-    from nt import _getvolumepathname
-except ImportError:
-    _getvolumepathname = None
 
 
 def _abspath_fallback(path):
@@ -188,27 +180,6 @@ def expanduser(path):
     return userhome + path[i:]
 
 
-def commonpath(paths, lower=False):
-    if lower:
-        paths = [path.lower() for path in paths]
-
-    min_path = min(paths, key=len)
-
-    common_path = min_path
-    common_path_len = len(common_path)
-
-    while True:
-        cropped = [path[:common_path_len] for path in paths]
-        if len(set(cropped)) == 1:
-            return common_path
-
-        common_path = os.path.dirname(common_path)
-        common_path_len = len(common_path)
-
-        if splitdrive(common_path)[0] == common_path:
-            return
-
-
 def relpath(tail, root=None):
     if root is None:
         root = os.getcwd()
@@ -243,11 +214,17 @@ def commonpath(paths, lower=False):
     if lower:
         paths = [path.lower() for path in paths]
 
-    min_path = min(paths)
-    max_path = max(paths)
+    splitted = [path.split('\\') for path in paths]
 
-    for i, char in enumerate(min_path):
-        if char != max_path[i]:
-            return min_path[:i]
+    min_splitted = min(splitted)
+    max_splitted = max(splitted)
 
-    return min_path
+    for index, (path, path2) in enumerate(zip(min_splitted, max_splitted)):
+        if path != path2:
+            result = '\\'.join(min_splitted[:index])
+
+            if result[-1] == ':':
+                return result + '\\'
+            return result
+
+    return '\\'.join(min_splitted)

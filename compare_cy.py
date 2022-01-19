@@ -6,8 +6,8 @@ else:
 	from unix_test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
 	
 import timeit
-import faster_os_cy as faster_os
-#import faster_os
+import faster_os
+import faster_os_cy
 import os
 
 
@@ -42,85 +42,85 @@ def test_funcs_pair(pair, number=5000):
 funcs_to_test = [
     (
         'split',
-        os.path.split,
+        faster_os_cy.split,
         faster_os.split,
     ),
     (
         'splitdrive',
-        os.path.splitdrive,
+        faster_os_cy.splitdrive,
         faster_os.splitdrive,
     ),
     (
         'normcase',
-        os.path.normcase,
+        faster_os_cy.normcase,
         faster_os.normcase,
     ),
     (
         'splitext',
-        os.path.splitext,
+        faster_os_cy.splitext,
         faster_os.splitext,
     ),
     (
         'join',
-        os.path.join,
+        faster_os_cy.join,
         faster_os.join,
         join_paths,
         True,
     ),
     (
         'relpath',
-        os.path.relpath,
+        faster_os_cy.relpath,
         faster_os.relpath,
         rel_paths,
         True,
     ),
     (
         'ismount',
-        os.path.ismount,
+        faster_os_cy.ismount,
         faster_os.ismount,
     ),
     (
         'normpath',
-        os.path.normpath,
+        faster_os_cy.normpath,
         faster_os.normpath,
         norm_paths,
         False,
     ),
     (
         'expanduser',
-        os.path.expanduser,
+        faster_os_cy.expanduser,
         faster_os.expanduser,
     ),
     (
         'abspath',
-        os.path.abspath,
+        faster_os_cy.abspath,
         faster_os.abspath,
     ),
     (
         'isabs',
-        os.path.isabs,
+        faster_os_cy.isabs,
         faster_os.isabs,
     ),
     (
         'basename',
-        os.path.basename,
+        faster_os_cy.basename,
         faster_os.basename,
     ),
     (
         'dirname',
-        os.path.dirname,
+        faster_os_cy.dirname,
         faster_os.dirname,
     ),
     (
         'commonpath',
-        os.path.commonpath,
+        faster_os_cy.commonpath,
         faster_os.commonpath,
         valid_list_paths,
         False,
     ),
     (
         'commonprefix',
-        os.path.commonprefix,
+        faster_os_cy.commonprefix,
         faster_os.commonprefix,
         valid_list_paths,
         False,
@@ -128,6 +128,32 @@ funcs_to_test = [
 ]
 
 
+def os_multi_split(paths):
+    splitted = [os.path.split(path) for path in paths]
+
+
+def multi_split(paths):
+    splitted = [faster_os.split(path) for path in paths]
+
+
+def cy_multi_split(paths):
+    splitted = [faster_os_cy.split(path) for path in paths]
+
+
+def cy_integ_split(paths):
+    splitted = faster_os_cy.multi_split(paths)
+
+
+p = paths * 100000
+
+
+
+print('os loop', timeit.timeit(lambda: os_multi_split(p), number = 5))
+print('py loop', timeit.timeit(lambda: multi_split(p), number = 5))
+print('cy loop', timeit.timeit(lambda: cy_multi_split(p), number = 5))
+print('cy multi', timeit.timeit(lambda: cy_integ_split(p), number = 5))
+
+"""
 for pair in funcs_to_test:
     os_time, faster_os_time = test_funcs_pair(pair, number=1)
 
@@ -135,5 +161,6 @@ for pair in funcs_to_test:
     os_time, faster_os_time = test_funcs_pair(pair)
 
     print(
-        f'\n--> Comparing "{pair[0]}":\nFasterOS is {round(os_time / faster_os_time * 100)}% faster!'
+        f'\n--> Comparing "{pair[0]}":\nFasterOS is {round(faster_os_time / os_time * 100)}% faster!'
     )
+"""
