@@ -22,5 +22,5 @@ def run_tests(tests):
         print(f'----\nFailed {failed}/{len(tests)} tests.')
 
 
-# run_tests(win_tests.tests)
-run_tests(unix_tests.tests)
+run_tests(win_tests.tests)
+# run_tests(unix_tests.tests)
