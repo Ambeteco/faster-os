@@ -1,10 +1,10 @@
 import platform
 
 if platform.system() == 'Windows':
-	from test_paths import join_paths, valid_list_paths, rel_paths, norm_paths
+    from test_paths import join_paths, valid_list_paths, rel_paths, norm_paths
 else:
-	from unix_test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
-	
+    from unix_test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
+
 import timeit
 import faster_os
 import faster_os_cy
@@ -146,13 +146,10 @@ def cy_integ_split(paths):
 
 p = paths * 100000
 
-
-
-print('os loop', timeit.timeit(lambda: os_multi_split(p), number = 5))
-print('py loop', timeit.timeit(lambda: multi_split(p), number = 5))
-print('cy loop', timeit.timeit(lambda: cy_multi_split(p), number = 5))
-print('cy multi', timeit.timeit(lambda: cy_integ_split(p), number = 5))
-
+print('os loop', timeit.timeit(lambda: os_multi_split(p), number=5))
+print('py loop', timeit.timeit(lambda: multi_split(p), number=5))
+print('cy loop', timeit.timeit(lambda: cy_multi_split(p), number=5))
+print('cy multi', timeit.timeit(lambda: cy_integ_split(p), number=5))
 """
 for pair in funcs_to_test:
     os_time, faster_os_time = test_funcs_pair(pair, number=1)
