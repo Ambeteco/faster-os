@@ -28,14 +28,15 @@ import stat
 import genericpath
 from genericpath import *
 
-__all__ = ["normcase","isabs","join","splitdrive","split","splitext",
-           "basename","dirname","commonprefix","getsize","getmtime",
-           "getatime","getctime","islink","exists","lexists","isdir","isfile",
-           "ismount", "expanduser","expandvars","normpath","abspath",
-           "samefile","sameopenfile","samestat",
-           "curdir","pardir","sep","pathsep","defpath","altsep","extsep",
-           "devnull","realpath","supports_unicode_filenames","relpath",
-           "commonpath"]
+__all__ = [
+    "normcase", "isabs", "join", "splitdrive", "split", "splitext", "basename",
+    "dirname", "commonprefix", "getsize", "getmtime", "getatime", "getctime",
+    "islink", "exists", "lexists", "isdir", "isfile", "ismount", "expanduser",
+    "expandvars", "normpath", "abspath", "samefile", "sameopenfile",
+    "samestat", "curdir", "pardir", "sep", "pathsep", "defpath", "altsep",
+    "extsep", "devnull", "realpath", "supports_unicode_filenames", "relpath",
+    "commonpath"
+]
 
 
 def _get_sep(path):
@@ -44,10 +45,12 @@ def _get_sep(path):
     else:
         return '/'
 
+
 # Normalize the case of a pathname.  Trivial in Posix, string.lower on Mac.
 # On MS-DOS this may also turn slashes into backslashes; however, other
 # normalizations (such as optimizing '../' away) are not allowed
 # (another function should be defined to do that).
+
 
 def normcase(s):
     """Normalize case of pathname.  Has no effect under Posix"""
@@ -56,6 +59,7 @@ def normcase(s):
 
 # Return whether a path is absolute.
 # Trivial in Posix, harder on the Mac or MS-DOS.
+
 
 def isabs(s):
     """Test whether a path is absolute"""
@@ -67,6 +71,7 @@ def isabs(s):
 # Join pathnames.
 # Ignore the previous parts if a part is absolute.
 # Insert a '/' unless the first part is empty or already ends in '/'.
+
 
 def join(a, *p):
     """Join two or more pathname components, inserting '/' as needed.
@@ -97,6 +102,7 @@ def join(a, *p):
 # '/' in the path, head  will be empty.
 # Trailing '/'es are stripped from head unless it is the root.
 
+
 def split(p):
     """Split a pathname.  Returns tuple "(head, tail)" where "tail" is
     everything after the final slash.  Either part may be empty."""
@@ -104,7 +110,7 @@ def split(p):
     sep = _get_sep(p)
     i = p.rfind(sep) + 1
     head, tail = p[:i], p[i:]
-    if head and head != sep*len(head):
+    if head and head != sep * len(head):
         head = head.rstrip(sep)
     return head, tail
 
@@ -113,6 +119,7 @@ def split(p):
 # The extension is everything starting at the last dot in the last
 # pathname component; the root is everything before that.
 # It is always true that root + ext == p.
+
 
 def splitext(p):
     p = os.fspath(p)
@@ -123,10 +130,13 @@ def splitext(p):
         sep = '/'
         extsep = '.'
     return genericpath._splitext(p, sep, None, extsep)
+
+
 splitext.__doc__ = genericpath._splitext.__doc__
 
 # Split a pathname into a drive specification and the rest of the
 # path.  Useful on DOS/Windows/NT; on Unix, the drive is always empty.
+
 
 def splitdrive(p):
     """Split a pathname into drive and path. On Posix, drive is always
@@ -136,6 +146,7 @@ def splitdrive(p):
 
 
 # Return the tail (basename) part of a path, same as split(path)[1].
+
 
 def basename(p):
     """Returns the final component of a pathname"""
@@ -147,19 +158,21 @@ def basename(p):
 
 # Return the head (dirname) part of a path, same as split(path)[0].
 
+
 def dirname(p):
     """Returns the directory component of a pathname"""
     p = os.fspath(p)
     sep = _get_sep(p)
     i = p.rfind(sep) + 1
     head = p[:i]
-    if head and head != sep*len(head):
+    if head and head != sep * len(head):
         head = head.rstrip(sep)
     return head
 
 
 # Is a path a symbolic link?
 # This will always return false on systems where os.lstat doesn't exist.
+
 
 def islink(path):
     """Test whether a path is a symbolic link"""
@@ -169,7 +182,9 @@ def islink(path):
         return False
     return stat.S_ISLNK(st.st_mode)
 
+
 # Being true for dangling symbolic links is also useful.
+
 
 def lexists(path):
     """Test whether a path exists.  Returns True for broken symbolic links"""
@@ -182,6 +197,7 @@ def lexists(path):
 
 # Is a path a mount point?
 # (Does this work for all UNIXes?  Is it even guaranteed to work by Posix?)
+
 
 def ismount(path):
     """Test whether a path is a mount point"""
@@ -208,11 +224,11 @@ def ismount(path):
     dev1 = s1.st_dev
     dev2 = s2.st_dev
     if dev1 != dev2:
-        return True     # path/.. on a different device as path
+        return True  # path/.. on a different device as path
     ino1 = s1.st_ino
     ino2 = s2.st_ino
     if ino1 == ino2:
-        return True     # path/.. is the same i-node as path
+        return True  # path/.. is the same i-node as path
     return False
 
 
@@ -224,6 +240,7 @@ def ismount(path):
 # See also module 'glob' for expansion of *, ? and [...] in pathnames.
 # (A function should also be defined to do full *sh-style environment
 # variable expansion.)
+
 
 def expanduser(path):
     """Expand ~ and ~user constructions.  If user or $HOME is unknown,
@@ -280,6 +297,7 @@ def expanduser(path):
 
 _varprog = None
 _varprogb = None
+
 
 def expandvars(path):
     """Expand shell variables of form $var and ${var}.  Unknown variables
@@ -338,6 +356,7 @@ try:
     from posix import _path_normpath
 
 except ImportError:
+
     def normpath(path):
         """Normalize path, eliminating double slashes, etc."""
         path = os.fspath(path)
@@ -357,26 +376,27 @@ except ImportError:
         # POSIX allows one or two initial slashes, but treats three or more
         # as single slash.
         # (see http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap04.html#tag_04_13)
-        if (initial_slashes and
-            path.startswith(sep*2) and not path.startswith(sep*3)):
+        if (initial_slashes and path.startswith(sep * 2)
+                and not path.startswith(sep * 3)):
             initial_slashes = 2
         comps = path.split(sep)
         new_comps = []
         for comp in comps:
             if comp in (empty, dot):
                 continue
-            if (comp != dotdot or (not initial_slashes and not new_comps) or
-                 (new_comps and new_comps[-1] == dotdot)):
+            if (comp != dotdot or (not initial_slashes and not new_comps)
+                    or (new_comps and new_comps[-1] == dotdot)):
                 new_comps.append(comp)
             elif new_comps:
                 new_comps.pop()
         comps = new_comps
         path = sep.join(comps)
         if initial_slashes:
-            path = sep*initial_slashes + path
+            path = sep * initial_slashes + path
         return path or dot
 
 else:
+
     def normpath(path):
         """Normalize path, eliminating double slashes, etc."""
         path = os.fspath(path)
@@ -400,12 +420,14 @@ def abspath(path):
 # Return a canonical path (i.e. the absolute location of a file on the
 # filesystem).
 
+
 def realpath(filename, *, strict=False):
     """Return the canonical path of the specified filename, eliminating any
 symbolic links encountered in the path."""
     filename = os.fspath(filename)
     path, ok = _joinrealpath(filename[:0], filename, strict, {})
     return abspath(path)
+
 
 # Join two paths, normalizing and eliminating any symbolic links
 # encountered in the second path.
@@ -463,16 +485,17 @@ def _joinrealpath(path, rest, strict, seen):
             else:
                 # Return already resolved part + rest of the path unchanged.
                 return join(newpath, rest), False
-        seen[newpath] = None # not resolved symlink
+        seen[newpath] = None  # not resolved symlink
         path, ok = _joinrealpath(path, os.readlink(newpath), strict, seen)
         if not ok:
             return join(path, rest), False
-        seen[newpath] = path # resolved symlink
+        seen[newpath] = path  # resolved symlink
 
     return path, True
 
 
 supports_unicode_filenames = (sys.platform == 'darwin')
+
 
 def relpath(path, start=None):
     """Return a relative version of a path"""
@@ -501,7 +524,7 @@ def relpath(path, start=None):
         # Work out how much of the filepath is shared by start and path.
         i = len(commonprefix([start_list, path_list]))
 
-        rel_list = [pardir] * (len(start_list)-i) + path_list[i:]
+        rel_list = [pardir] * (len(start_list) - i) + path_list[i:]
         if not rel_list:
             return curdir
         return join(*rel_list)
@@ -514,6 +537,7 @@ def relpath(path, start=None):
 # The paths are not normalized before comparing them (this is the
 # responsibility of the caller). Any trailing separator is stripped from the
 # returned path.
+
 
 def commonpath(paths):
     """Given a sequence of path names, returns the longest common sub-path."""
@@ -537,7 +561,8 @@ def commonpath(paths):
         except ValueError:
             raise ValueError("Can't mix absolute and relative paths") from None
 
-        split_paths = [[c for c in s if c and c != curdir] for s in split_paths]
+        split_paths = [[c for c in s if c and c != curdir]
+                       for s in split_paths]
         s1 = min(split_paths)
         s2 = max(split_paths)
         common = s1

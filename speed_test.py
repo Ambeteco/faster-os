@@ -1,9 +1,9 @@
 import platform
 
 if platform.system() == 'Windows':
-	from test_paths import join_paths, valid_list_paths, rel_paths, norm_paths
+    from test_paths import join_paths, valid_list_paths, rel_paths, norm_paths
 else:
-	from unix_test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
+    from unix_test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
 
 import timeit
 import faster_os_cy as faster_os
@@ -126,7 +126,6 @@ funcs_to_test = [
         False,
     ),
 ]
-
 
 for pair in funcs_to_test:
     os_time, faster_os_time = test_funcs_pair(pair, number=1)
