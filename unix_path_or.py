@@ -5,12 +5,12 @@ def normpath(path):
     return path
 
 
-
 try:
     from posix import _path_normpath
 
 except ImportError:
-    def normpath(path):        
+
+    def normpath(path):
         sep = '/'
         empty = ''
         dot = '.'
@@ -21,8 +21,8 @@ except ImportError:
 
         initial_slashes = path.startswith('/')
 
-        if (initial_slashes and
-            path.startswith(sep*2) and not path.startswith(sep*3)):
+        if (initial_slashes and path.startswith(sep * 2)
+                and not path.startswith(sep * 3)):
             initial_slashes = 2
 
         comps = path.split(sep)
@@ -31,8 +31,8 @@ except ImportError:
         for comp in comps:
             if comp in (empty, dot):
                 continue
-            if (comp != dotdot or (not initial_slashes and not new_comps) or
-                 (new_comps and new_comps[-1] == dotdot)):
+            if (comp != dotdot or (not initial_slashes and not new_comps)
+                    or (new_comps and new_comps[-1] == dotdot)):
                 new_comps.append(comp)
             elif new_comps:
                 new_comps.pop()
@@ -40,11 +40,12 @@ except ImportError:
         comps = new_comps
         path = sep.join(comps)
         if initial_slashes:
-            path = sep*initial_slashes + path
+            path = sep * initial_slashes + path
 
         return path or dot
 
 else:
+
     def normpath(path):
         return _path_normpath(path) or "."
 
@@ -58,6 +59,7 @@ def abspath(path):
 
 def isabs(path):
     return path.startswith('/')
+
 
 import os
 
@@ -84,6 +86,7 @@ def split(path):
 def splitdrive(path):
     return '', path
 
+
 def isabs(path):
     path = splitdrive(path)[1]
     return bool(path) and path[0] == '/'
@@ -92,7 +95,7 @@ def isabs(path):
 def join(path, *paths):
     joined = '/'.join(paths)
     if not path:
-        return joined    	
+        return joined
 
     path = path.rstrip('/')
     return f"{path}/{joined}"
@@ -120,7 +123,7 @@ def ismount(path):
     return path == '/'
 
 
-def expanduser(path):    
+def expanduser(path):
     if path.startswith('~/'):
         home = [
             os.environ.get('HOMEPATH'),
@@ -136,7 +139,7 @@ def expanduser(path):
 
     if path.startswith('~'):
         sep_loc = path.find('/')
-        username = path[1:None if sep_loc == -1 else sep_loc]     
+        username = path[1:None if sep_loc == -1 else sep_loc]
 
         try:
             user_path = pwd.getpwnam(username).pw_dir
@@ -145,8 +148,6 @@ def expanduser(path):
             return path
 
     return path
-
-
 
 
 def relpath(tail, root=None):
