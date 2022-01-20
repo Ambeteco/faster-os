@@ -1,0 +1,28 @@
+Just compiled (no type hints)
+
+
+os loop 6.952020399999999
+py loop 2.2695347999999997
+cy loop 1.8683122
+cy multi 1.6321671000000002
+
+
+After adding type hints to the func arguments and return types
+os loop 6.95572
+py loop 2.324162500000001
+cy loop 1.2360269000000006
+cy multi 0.9416066000000001
+
+
+Added @ccall to eligible functions
+os loop 6.8548514
+py loop 2.2821087
+cy loop 1.2136888999999993
+cy multi 0.8635875000000013
+
+
+Added type hints to all variable inside the functions
+os loop 6.8354638
+py loop 2.2920641999999996
+cy loop 1.1233585999999995
+cy multi 0.784145800000001

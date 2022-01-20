@@ -15,7 +15,7 @@ except ImportError:
         if not path:
             return '.'
 
-        initial_slashes: cython.bool = path.startswith('/')
+        initial_slashes: cython.bint = path.startswith('/')
 
         if (initial_slashes and path.startswith(sep * 2)
                 and not path.startswith(sep * 3)):
@@ -57,7 +57,7 @@ def abspath(path: cython.str) -> cython.str:
 
 @cython.exceptval(check=False)
 @cython.ccall
-def isabs(path: cython.str):
+def isabs(path: cython.str) -> cython.bint:
     return path.startswith('/')
 
 
@@ -125,7 +125,7 @@ def dirname(path: cython.str) -> cython.str:
 
 @cython.exceptval(check=False)
 @cython.ccall
-def ismount(path: cython.str):
+def ismount(path: cython.str) -> cython.bint:
     return path == '/'
 
 

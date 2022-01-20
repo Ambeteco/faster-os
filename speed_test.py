@@ -6,8 +6,8 @@ else:
     from unix_test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
 
 import timeit
-import faster_os_cy as faster_os
-#import faster_os
+import faster_os
+import faster_os_py
 import os
 
 
@@ -126,6 +126,109 @@ funcs_to_test = [
         False,
     ),
 ]
+
+funcs_to_test = [
+    (
+        'split',
+        faster_os_py.split,
+        faster_os.split,
+    ),
+    (
+        'splitdrive',
+        faster_os_py.splitdrive,
+        faster_os.splitdrive,
+    ),
+    (
+        'normcase',
+        faster_os_py.normcase,
+        faster_os.normcase,
+    ),
+    (
+        'splitext',
+        faster_os_py.splitext,
+        faster_os.splitext,
+    ),
+    (
+        'join',
+        faster_os_py.join,
+        faster_os.join,
+        join_paths,
+        True,
+    ),
+    (
+        'relpath',
+        faster_os_py.relpath,
+        faster_os.relpath,
+        rel_paths,
+        True,
+    ),
+    (
+        'ismount',
+        faster_os_py.ismount,
+        faster_os.ismount,
+    ),
+    (
+        'normpath',
+        faster_os_py.normpath,
+        faster_os.normpath,
+        norm_paths,
+        False,
+    ),
+    (
+        'expanduser',
+        faster_os_py.expanduser,
+        faster_os.expanduser,
+    ),
+    (
+        'abspath',
+        faster_os_py.abspath,
+        faster_os.abspath,
+    ),
+    (
+        'isabs',
+        faster_os_py.isabs,
+        faster_os.isabs,
+    ),
+    (
+        'basename',
+        faster_os_py.basename,
+        faster_os.basename,
+    ),
+    (
+        'dirname',
+        faster_os_py.dirname,
+        faster_os.dirname,
+    ),
+    (
+        'commonpath',
+        faster_os_py.commonpath,
+        faster_os.commonpath,
+        valid_list_paths,
+        False,
+    ),
+    (
+        'commonprefix',
+        faster_os_py.commonprefix,
+        faster_os.commonprefix,
+        valid_list_paths,
+        False,
+    ),
+    (
+        'multi_split',
+        faster_os_py.multi_split,
+        faster_os.multi_split,
+        valid_list_paths,
+        False,
+    ),
+]
+
+# funcs_to_test = [
+#     (
+#         'normcase',
+#         faster_os.normcase,
+#         faster_os.normcase2,
+#     ),
+# ]
 
 for pair in funcs_to_test:
     os_time, faster_os_time = test_funcs_pair(pair, number=1)
