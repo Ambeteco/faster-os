@@ -3,12 +3,6 @@ import pwd
 import os
 
 
-@cython.exceptval(check=False)
-@cython.ccall
-def normpath(path: cython.str) -> cython.str:
-    return path
-
-
 try:
     from posix import _path_normpath
 except ImportError:
@@ -95,11 +89,6 @@ def split(path: cython.str) -> cython.tuple:
 @cython.ccall
 def splitdrive(path: cython.str) -> cython.tuple:
     return '', path
-
-
-def isabs(path: cython.str) -> cython.bool:
-    path: cython.str = splitdrive(path)[1]
-    return bool(path) and path[0] == '/'
 
 
 def join(path: cython.str, *paths: cython.list) -> cython.str:
