@@ -1,5 +1,5 @@
 import traceback
-from test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
+from unix.test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
 import os
 import faster_os
 
@@ -110,20 +110,20 @@ def base_test(os_func, faster_os_func, paths, unpack=False):
 
 
 tests = [
-    # ('split', split_test),
-    # ('splitdrive', splitdrive_test),
-    # ('ismount', ismount_test),
+    ('split', split_test),
+    ('splitdrive', splitdrive_test),
+    ('ismount', ismount_test),
     ('normpath', normpath_test),
-    # ('abspath', abspath_test),
-    # ('expanduser', expanduser_test),
-    # ('relpath', relpath_test),
-    # ('normcase', normcase_test),
-    # ('isabs', isabs_test),
-    # ('join', join_test),
-    # ('basename', basename_test),
-    # ('dirname', dirname_test),
-    # ('commonpath', commonpath_test),
-    # ('commonprefix', commonprefix_test),
-    # ('splitext', splitext_test),
-    # ('relpath', relpath_test),
+    ('abspath', abspath_test),
+    ('normcase', normcase_test),
+    ('expanduser', expanduser_test),
+    ('relpath', relpath_test),
+    ('isabs', isabs_test),
+    ('join', join_test),
+    ('basename', basename_test),
+    ('dirname', dirname_test),
+    ('commonpath', commonpath_test),
+    ('commonprefix', commonprefix_test),
+    ('splitext', splitext_test),
+    ('relpath', relpath_test),
 ]

@@ -1,21 +1,26 @@
+import cython
 import os
 
 
-def normpath(path):
-    special_prefixes = ('\\\\.\\', '\\\\?\\')
+@cython.exceptval(check=False)
+@cython.ccall
+def normpath(path: str) -> str:
+    special_prefixes: tuple = ('\\\\.\\', '\\\\?\\')
 
     if path.startswith(special_prefixes):
         return path
+
+    prefix: str
 
     path = path.replace('/', '\\')
     prefix, path = splitdrive(path)
 
     if path.startswith('\\'):
-        prefix = f'{prefix}\\'
-        path = path.lstrip('\\')
+        prefix: str = f'{prefix}\\'
+        path: str = path.lstrip('\\')
 
-    comps = path.split('\\')
-    i = 0
+    comps: list = path.split('\\')
+    i: cython.int = 0
 
     while i < len(comps):
         if not comps[i] or comps[i] == '.':
@@ -39,29 +44,35 @@ def normpath(path):
     return prefix + '\\'.join(comps)
 
 
-def _abspath_fallback(path):
+@cython.exceptval(check=False)
+@cython.ccall
+def _abspath_fallback(path: str) -> str:
     if not isabs(path):
-        cwd = os.getcwd()
+        cwd: str = os.getcwd()
         path = join(cwd, path)
     return normpath(path)
 
 
-def normcase(path):
+@cython.exceptval(check=False)
+@cython.ccall
+def normcase(path: str) -> str:
     path = path.replace('/', '\\')
     path = path.lower()
     return path
 
 
-def split(path):
-    last_slash = path.rfind('\\')
+@cython.exceptval(check=False)
+@cython.ccall
+def split(path: str) -> tuple:
+    last_slash: cython.int = path.rfind('\\')
 
     if last_slash == -1:
         if ':' in path:
             return path[:2], path[2:]
         return '', path
 
-    base = path[:last_slash]
-    tail = path[last_slash + 1:]
+    base: str = path[:last_slash]
+    tail: str = path[last_slash + 1:]
 
     if base[-1] == ':':
         base = f'{base}\\'
@@ -69,14 +80,16 @@ def split(path):
     return base, tail
 
 
-def csplit(path):
-    last_slash = path.rfind('\\')
+@cython.exceptval(check=False)
+@cython.cfunc
+def csplit(path: str) -> tuple:
+    last_slash: cython.int = path.rfind('\\')
 
     if last_slash == -1:
         return path[:2], path[2:]
 
-    base = path[:last_slash]
-    tail = path[last_slash + 1:]
+    base: str = path[:last_slash]
+    tail: str = path[last_slash + 1:]
 
     if base[-1] == ':':
         base = f'{base}\\'
@@ -84,16 +97,18 @@ def csplit(path):
     return base, tail
 
 
-def splitdrive(path):
-    colon_loc = path.find(':')
+@cython.exceptval(check=False)
+@cython.ccall
+def splitdrive(path: str) -> tuple:
+    colon_loc: cython.int = path.find(':')
 
     if colon_loc == -1:
-        unc_base_ind = path.find('\\', 2)
+        unc_base_ind: cython.int = path.find('\\', 2)
 
         if not path or path[0] != '\\':
             return '', path
 
-        unc_path_ind = path.find('\\', unc_base_ind + 1)
+        unc_path_ind: cython.int = path.find('\\', unc_base_ind + 1)
         result = path[:unc_path_ind], path[unc_path_ind:]
         return result
 
@@ -101,7 +116,9 @@ def splitdrive(path):
     return result
 
 
-def isabs(path):
+@cython.exceptval(check=False)
+@cython.ccall
+def isabs(path: str) -> cython.bint:
     if path.startswith('\\\\?\\'):
         return True
 
@@ -109,8 +126,8 @@ def isabs(path):
     return not not path and path[0] == '\\'
 
 
-def join(path, *paths):
-    joined = '\\'.join(paths)
+def join(path: str, *paths) -> str:
+    joined: str = '\\'.join(paths)
     path = path.rstrip('\\')
 
     if path[-1] == ':':
@@ -118,9 +135,11 @@ def join(path, *paths):
     return f"{path}\\{joined}"
 
 
-def splitext(path):
-    ext_ind = path.rfind('.')
-    ext = path[ext_ind:]
+@cython.exceptval(check=False)
+@cython.ccall
+def splitext(path: str) -> tuple:
+    ext_ind: cython.int = path.rfind('.')
+    ext: str = path[ext_ind:]
 
     if ext_ind == -1 or '\\' in ext:
         return (path, '')
@@ -128,15 +147,23 @@ def splitext(path):
     return path[:ext_ind], ext
 
 
-def basename(path):
+@cython.exceptval(check=False)
+@cython.ccall
+def basename(path: str) -> str:
     return split(path)[1]
 
 
-def dirname(path):
+@cython.exceptval(check=False)
+@cython.ccall
+def dirname(path: str) -> str:
     return split(path)[0]
 
 
-def ismount(path):
+@cython.exceptval(check=False)
+@cython.ccall
+def ismount(path: str) -> cython.bint:
+    rest: str
+    root: str
 
     path = abspath(path)
 
@@ -144,18 +171,20 @@ def ismount(path):
     return root and not rest.strip('\\')
 
 
-def expanduser(path):
+@cython.exceptval(check=False)
+@cython.ccall
+def expanduser(path: str) -> str:
     if path.startswith('~\\'):
-        userprofile = os.environ.get('USERPROFILE', '')
+        userprofile: str = os.environ.get('USERPROFILE', '')
         return f'{userprofile}\\{path[2:]}'
 
     if path.startswith('~'):
-        sep_loc = path.find('\\')
-        username = path[1:None if sep_loc == -1 else sep_loc]
+        sep_loc: cython.int = path.find('\\')
+        username: str = path[1:None if sep_loc == -1 else sep_loc]
         userprofile = os.environ.get('USERPROFILE', '')
 
         if os.environ.get('USERNAME') != username:
-            home = split(userprofile)[0]
+            home: str = split(userprofile)[0]
             return f'{home}\\{path[1:]}'
 
         return f'{userprofile}\\{path[1:]}'
@@ -163,27 +192,37 @@ def expanduser(path):
     return path
 
 
-def relpath(tail, root=None):
+@cython.exceptval(check=False)
+@cython.ccall
+def relpath(tail: str, root=None) -> str:
     if root is None:
-        root = os.getcwd()
+        root: str = os.getcwd()
 
     if tail.startswith(root):
         return tail[len(root) + 1:]
+
+    i: cython.int
+    chars: tuple
+    tail_char: str
+    root_char: str
 
     for i, chars in enumerate(zip(tail, root)):
         tail_char, root_char = chars
         if tail_char != root_char:
             break
 
-    dots = "..\\" * (root.count('\\') - tail[:i].count('\\') + 1)
+    dots: str = "..\\" * (root.count('\\') - tail[:i].count('\\') + 1)
     return f'{dots}{tail[i:]}'
 
 
-def commonprefix(paths):
-    min_path = min(paths)
-    max_path = max(paths)
+@cython.exceptval(check=False)
+@cython.ccall
+def commonprefix(paths) -> str:
+    min_path: str = min(paths)
+    max_path: str = max(paths)
 
-    i = 0
+    i: cython.int = 0
+    char: str
 
     for char in min_path:
         if char != max_path[i]:
@@ -193,11 +232,18 @@ def commonprefix(paths):
     return min_path
 
 
-def commonpath(paths):
-    splitted = [path.split('\\') for path in paths]
+@cython.exceptval(check=False)
+@cython.ccall
+def commonpath(paths) -> str:
+    splitted: list = [path.split('\\') for path in paths]
 
-    min_splitted = min(splitted)
-    max_splitted = max(splitted)
+    min_splitted: list = min(splitted)
+    max_splitted: list = max(splitted)
+
+    index: cython.int
+    path: str
+    path2: str
+    result: str
 
     for index, (path, path2) in enumerate(zip(min_splitted, max_splitted)):
         if path != path2:
@@ -210,14 +256,16 @@ def commonpath(paths):
     return '\\'.join(min_splitted)
 
 
-def multi_split(paths):
+@cython.exceptval(check=False)
+@cython.ccall
+def multi_split(paths) -> list:
     return [split(path) for path in paths]
 
 
 try:
     from nt import _getfullpathname
 
-    def abspath(path):
+    def abspath(path: str) -> str:
         try:
             return _getfullpathname(normpath(path))
         except:

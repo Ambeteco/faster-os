@@ -1,9 +1,9 @@
 import platform
 
 if platform.system() == 'Windows':
-    from test_paths import join_paths, valid_list_paths, rel_paths, norm_paths
+    from win.test_paths import join_paths, valid_list_paths, rel_paths, norm_paths
 else:
-    from unix_test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
+    from unix.test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
 
 import timeit
 import faster_os
@@ -39,7 +39,7 @@ def test_funcs_pair(pair, number=5000):
     return os_time, faster_os_time
 
 
-funcs_to_test = [
+cy_vs_os = [
     (
         'split',
         os.path.split,
@@ -127,7 +127,7 @@ funcs_to_test = [
     ),
 ]
 
-funcs_to_test = [
+cy_vs_py = [
     (
         'split',
         faster_os_py.split,
@@ -222,13 +222,9 @@ funcs_to_test = [
     ),
 ]
 
-# funcs_to_test = [
-#     (
-#         'normcase',
-#         faster_os.normcase,
-#         faster_os.normcase2,
-#     ),
-# ]
+cy_vs_os
+cy_vs_py
+funcs_to_test = cy_vs_os
 
 for pair in funcs_to_test:
     os_time, faster_os_time = test_funcs_pair(pair, number=1)

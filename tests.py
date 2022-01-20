@@ -1,6 +1,10 @@
 import traceback
-import win_tests
-import unix_tests
+import platform
+
+if platform.system() == 'Windows':
+    from win.tests import tests
+else:
+    from unix.tests import tests
 
 
 def run_tests(tests):
@@ -22,5 +26,4 @@ def run_tests(tests):
         print(f'----\nFailed {failed}/{len(tests)} tests.')
 
 
-run_tests(win_tests.tests)
-# run_tests(unix_tests.tests)
+run_tests(tests)

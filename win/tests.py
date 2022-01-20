@@ -1,5 +1,5 @@
 import traceback
-from unix_test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
+from win.test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
 import os
 import faster_os
 
@@ -115,9 +115,9 @@ tests = [
     ('ismount', ismount_test),
     ('normpath', normpath_test),
     ('abspath', abspath_test),
-    ('normcase', normcase_test),
     ('expanduser', expanduser_test),
     ('relpath', relpath_test),
+    ('normcase', normcase_test),
     ('isabs', isabs_test),
     ('join', join_test),
     ('basename', basename_test),

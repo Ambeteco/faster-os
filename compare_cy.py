@@ -1,9 +1,9 @@
 import platform
 
 if platform.system() == 'Windows':
-    from test_paths import paths, join_paths, valid_list_paths, rel_paths, norm_paths
+    from win.test_paths import paths, join_paths, valid_list_paths, rel_paths, norm_paths
 else:
-    from unix_test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
+    from unix.test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
 
 import timeit
 import faster_os_py
