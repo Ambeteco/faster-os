@@ -123,7 +123,7 @@ def isabs(path: str) -> cython.bint:
         return True
 
     path = splitdrive(path)[1]
-    return not not path and path[0] == '\\'
+    return path and path[0] == '\\'
 
 
 def join(path: str, *paths) -> str:
@@ -168,7 +168,6 @@ def ismount(path: str) -> cython.bint:
     path = abspath(path)
 
     return len(path) == 2 and path[1] == ':'
-    return root and not rest.strip('\\')
 
 
 @cython.exceptval(check=False)

@@ -222,8 +222,8 @@ cy_vs_py = [
     ),
 ]
 
-cy_vs_os
-cy_vs_py
+# cy_vs_os
+# cy_vs_py
 funcs_to_test = cy_vs_os
 
 for pair in funcs_to_test:
