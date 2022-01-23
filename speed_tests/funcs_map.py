@@ -4,7 +4,7 @@ import faster_os
 import faster_os_py
 
 if platform.system() == 'Windows':
-    from win.test_paths import join_paths, valid_list_paths, rel_paths, norm_paths
+    from win.test_paths import paths, join_paths, valid_list_paths, rel_paths, norm_paths, list_paths, rel_paths, norm_paths, valid_list_paths
 else:
     from unix.test_paths import paths, join_paths, list_paths, rel_paths, norm_paths, valid_list_paths
 
@@ -188,5 +188,121 @@ fasteros_vs_fasterospy_map = [
         faster_os.path.multi_split,
         valid_list_paths,
         False,
+    ),
+]
+
+faster_os_multi_os = [
+    (
+        'multi_split',
+        os.path.split,
+        faster_os.path.multi_split,
+        paths,
+    ),
+    (
+        'multi_splitdrive',
+        os.path.splitdrive,
+        faster_os.path.multi_splitdrive,
+        paths,
+    ),
+    (
+        'multi_normcase',
+        os.path.normcase,
+        faster_os.path.multi_normcase,
+        paths,
+    ),
+    (
+        'multi_normpath',
+        os.path.normpath,
+        faster_os.path.multi_normpath,
+        norm_paths,
+    ),
+    (
+        'multi_basename',
+        os.path.basename,
+        faster_os.path.multi_basename,
+        paths,
+    ),
+    (
+        'multi_dirname',
+        os.path.dirname,
+        faster_os.path.multi_dirname,
+        paths,
+    ),
+    (
+        'multi_isabs',
+        os.path.isabs,
+        faster_os.path.multi_isabs,
+        paths,
+    ),
+    (
+        'multi_splitext',
+        os.path.splitext,
+        faster_os.path.multi_splitext,
+        paths,
+    ),
+    (
+        'multi_join',
+        os.path.join,
+        faster_os.path.multi_join,
+        join_paths,
+        True,
+    ),
+]
+
+faster_os_multi_faster_os = [
+    (
+        'multi_split',
+        faster_os.path.split,
+        faster_os.path.multi_split,
+        paths,
+    ),
+    (
+        'multi_normpath',
+        os.path.normpath,
+        faster_os.path.multi_normpath,
+        norm_paths,
+    ),
+    (
+        'multi_splitdrive',
+        faster_os.path.splitdrive,
+        faster_os.path.multi_splitdrive,
+        paths,
+    ),
+    (
+        'multi_normcase',
+        faster_os.path.normcase,
+        faster_os.path.multi_normcase,
+        paths,
+    ),
+    (
+        'multi_basename',
+        faster_os.path.basename,
+        faster_os.path.multi_basename,
+        paths,
+    ),
+    (
+        'multi_dirname',
+        faster_os.path.dirname,
+        faster_os.path.multi_dirname,
+        paths,
+    ),
+    (
+        'multi_isabs',
+        faster_os.path.isabs,
+        faster_os.path.multi_isabs,
+        paths,
+    ),
+    (
+        'multi_splitext',
+        faster_os.path.splitext,
+        faster_os.path.multi_splitext,
+        paths,
+    ),
+    (
+        'multi_join',
+        faster_os.path.join,
+        faster_os.path.multi_join,
+        join_paths,
+        True,
     ),
 ]

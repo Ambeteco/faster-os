@@ -82,23 +82,6 @@ def split(path: str) -> tuple:
 
 
 @cython.exceptval(check=False)
-@cython.cfunc
-def csplit(path: str) -> tuple:
-    last_slash: cython.int = path.rfind('\\')
-
-    if last_slash == -1:
-        return path[:2], path[2:]
-
-    base: str = path[:last_slash]
-    tail: str = path[last_slash + 1:]
-
-    if base[-1] == ':':
-        base = f'{base}\\'
-
-    return base, tail
-
-
-@cython.exceptval(check=False)
 @cython.ccall
 def splitdrive(path: str) -> tuple:
     colon_loc: cython.int = path.find(':')
@@ -256,12 +239,6 @@ def commonpath(paths) -> str:
     return '\\'.join(min_splitted)
 
 
-@cython.exceptval(check=False)
-@cython.ccall
-def multi_split(paths) -> list:
-    return [split(path) for path in paths]
-
-
 try:
     from nt import _getfullpathname
 
@@ -273,3 +250,57 @@ try:
 
 except ImportError:
     abspath = _abspath_fallback
+
+
+@cython.exceptval(check=False)
+@cython.ccall
+def multi_split(paths) -> list:
+    return [split(path) for path in paths]
+
+
+@cython.exceptval(check=False)
+@cython.ccall
+def multi_normpath(paths) -> list:
+    return [normpath(path) for path in paths]
+
+
+@cython.exceptval(check=False)
+@cython.ccall
+def multi_normcase(paths) -> list:
+    return [normcase(path) for path in paths]
+
+
+@cython.exceptval(check=False)
+@cython.ccall
+def multi_splitdrive(paths) -> list:
+    return [splitdrive(path) for path in paths]
+
+
+@cython.exceptval(check=False)
+@cython.ccall
+def multi_isabs(paths) -> list:
+    return [isabs(path) for path in paths]
+
+
+@cython.exceptval(check=False)
+@cython.ccall
+def multi_join(paths) -> list:
+    return [join(*path) for path in paths]
+
+
+@cython.exceptval(check=False)
+@cython.ccall
+def multi_splitext(paths) -> list:
+    return [splitext(path) for path in paths]
+
+
+@cython.exceptval(check=False)
+@cython.ccall
+def multi_basename(paths) -> list:
+    return [basename(path) for path in paths]
+
+
+@cython.exceptval(check=False)
+@cython.ccall
+def multi_dirname(paths) -> list:
+    return [dirname(path) for path in paths]
