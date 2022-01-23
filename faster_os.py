@@ -2,6 +2,8 @@ from os import *
 import platform
 
 if platform.system() == 'Windows':
-    from win.path import *
+    from win import path
+    from win.generic import *
 else:
-    from unix.path import *
+    from unix import path
+    from unix.generic import *
