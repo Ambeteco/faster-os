@@ -289,7 +289,7 @@ def multi_join(paths) -> list:
 
     for path in paths:
         results.append(join(*path))
-    
+
     return results
     # return [join(*path) for path in paths]
 

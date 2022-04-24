@@ -3,6 +3,7 @@ import os
 
 
 def test_funcs_pair(pair, number=100):
+
     def wrapper(func, unpack=False):
         if unpack:
             return lambda: [func(*path) for path in paths]
@@ -31,6 +32,7 @@ def test_funcs_pair(pair, number=100):
 
 
 def test_funcs_pair_multi(pair, number=1):
+
     def wrapper(func, unpack=False):
         if unpack:
             return lambda: [func(*path) for path in paths]
