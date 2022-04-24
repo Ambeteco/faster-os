@@ -193,6 +193,45 @@ fasteros_vs_fasterospy_map = [
 
 faster_os_multi_os = [
     (
+        'multi_commonpath',
+        os.path.commonpath,
+        faster_os.path.multi_commonpath,
+        valid_list_paths,
+        False,
+    ),
+    (
+        'multi_commonprefix',
+        os.path.commonprefix,
+        faster_os.path.multi_commonprefix,
+        valid_list_paths,
+        False,
+    ),
+    (
+        'multi_abspath',
+        os.path.abspath,
+        faster_os.path.multi_abspath,
+        paths,
+    ),
+    (
+        'multi_ismount',
+        os.path.ismount,
+        faster_os.path.multi_ismount,
+        paths,
+    ),
+    (
+        'multi_expanduser',
+        os.path.expanduser,
+        faster_os.path.multi_expanduser,
+        paths,
+    ),
+    (
+        'multi_relpath',
+        os.path.relpath,
+        faster_os.path.multi_relpath,
+        rel_paths,
+        True,
+    ),
+    (
         'multi_split',
         os.path.split,
         faster_os.path.multi_split,
@@ -251,6 +290,45 @@ faster_os_multi_os = [
 
 faster_os_multi_faster_os = [
     (
+        'multi_commonpath',
+        faster_os.path.commonpath,
+        faster_os.path.multi_commonpath,
+        valid_list_paths,
+        False,
+    ),
+    (
+        'multi_commonprefix',
+        faster_os.path.commonprefix,
+        faster_os.path.multi_commonprefix,
+        valid_list_paths,
+        False,
+    ),
+    (
+        'multi_abspath',
+        faster_os.path.abspath,
+        faster_os.path.multi_abspath,
+        paths,
+    ),
+    (
+        'multi_ismount',
+        faster_os.path.ismount,
+        faster_os.path.multi_ismount,
+        paths,
+    ),
+    (
+        'multi_expanduser',
+        faster_os.path.expanduser,
+        faster_os.path.multi_expanduser,
+        paths,
+    ),
+    (
+        'multi_relpath',
+        faster_os.path.relpath,
+        faster_os.path.multi_relpath,
+        rel_paths,
+        True,
+    ),
+    (
         'multi_split',
         faster_os.path.split,
         faster_os.path.multi_split,
@@ -258,7 +336,7 @@ faster_os_multi_faster_os = [
     ),
     (
         'multi_normpath',
-        os.path.normpath,
+        faster_os.path.normpath,
         faster_os.path.multi_normpath,
         norm_paths,
     ),

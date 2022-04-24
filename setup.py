@@ -3,12 +3,11 @@ from Cython.Build import cythonize
 import platform
 
 if platform.system() == 'Windows':
-    setup(ext_modules=cythonize(
-        ["win/path.py", "win/generic.py"],
-        compiler_directives={
-            'language_level': "3",
-        },
-    ), )
+    setup(ext_modules=cythonize(["win/path.py", "win/generic.py"],
+                                compiler_directives={
+                                    'language_level': "3",
+                                },
+                                annotate=True), )
 
 else:
 
