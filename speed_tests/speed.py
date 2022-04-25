@@ -3,10 +3,11 @@ import os
 
 
 def test_funcs_pair(pair, number=100):
+
     def wrapper(func, unpack=False):
         if unpack:
-            return lambda: [func(*path) for path in paths]
-        return lambda: [func(path) for path in paths]
+            return lambda: [func(*path) for path in paths_to_test]
+        return lambda: [func(path) for path in paths_to_test]
 
     unpack = False
 
@@ -22,6 +23,8 @@ def test_funcs_pair(pair, number=100):
         *pair, paths, unpack = pair
 
     name, os_func, faster_os_func = pair
+    paths_to_test = paths * 500
+    print('p:', len(paths_to_test))
 
     os_time = timeit.timeit(wrapper(os_func, unpack=unpack), number=number)
     faster_os_time = timeit.timeit(wrapper(faster_os_func, unpack=unpack),
@@ -30,11 +33,12 @@ def test_funcs_pair(pair, number=100):
     return os_time, faster_os_time
 
 
-def test_funcs_pair_multi(pair, number=1):
+def test_funcs_pair_multi(pair, number=100):
+
     def wrapper(func, unpack=False):
         if unpack:
-            return lambda: [func(*path) for path in paths]
-        return lambda: [func(path) for path in paths]
+            return lambda: [func(*path) for path in paths_to_test]
+        return lambda: [func(path) for path in paths_to_test]
 
     unpack = False
 
@@ -42,18 +46,19 @@ def test_funcs_pair_multi(pair, number=1):
         *pair, unpack = pair
 
     name, os_func, faster_os_func, paths = pair
-    paths *= 3
+    paths_to_test = paths * 500
+    print('p:', len(paths_to_test))
 
     os_time = timeit.timeit(wrapper(os_func, unpack=unpack), number=number)
-    faster_os_time = timeit.timeit(lambda: faster_os_func(paths),
+    faster_os_time = timeit.timeit(lambda: faster_os_func(paths_to_test),
                                    number=number)
 
     return os_time, faster_os_time
 
 
 def compare(funcs_to_test):
-    for pair in funcs_to_test:
-        os_time, faster_os_time = test_funcs_pair(pair, number=1)
+    # for pair in funcs_to_test:
+    #     os_time, faster_os_time = test_funcs_pair(pair, number=1)
 
     for pair in funcs_to_test:
         os_time, faster_os_time = test_funcs_pair(pair)
@@ -61,6 +66,7 @@ def compare(funcs_to_test):
         print(
             f'\n--> Comparing "{pair[0]}":\nFasterOS is {round(os_time / faster_os_time * 100)}% faster!'
         )
+        print(f'----- OS: {os_time} | FasterOS: {faster_os_time}')
 
 
 def compare_multi(funcs_to_test):
@@ -68,8 +74,12 @@ def compare_multi(funcs_to_test):
     #     os_time, faster_os_time = test_funcs_pair_multi(pair, number=1)
 
     for pair in funcs_to_test:
+        print()
+        print('Running', pair[0])
+
         os_time, faster_os_time = test_funcs_pair_multi(pair)
 
         print(
-            f'\n--> Comparing "{pair[0]}":\nFasterOS is {round(os_time / faster_os_time * 100)}% faster!'
+            f'--> Comparing "{pair[0]}":\nFasterOS[multi] is {round(os_time / faster_os_time * 100)}% faster!'
         )
+        print(f'----- OS: {os_time} | FasterOS: {faster_os_time}')

@@ -285,13 +285,7 @@ def multi_isabs(paths) -> list:
 # @cython.exceptval(check=False)
 @cython.ccall
 def multi_join(paths) -> list:
-    results: list = []
-
-    for path in paths:
-        results.append(join(*path))
-    
-    return results
-    # return [join(*path) for path in paths]
+    return [join(*path) for path in paths]
 
 
 # @cython.exceptval(check=False)

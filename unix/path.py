@@ -206,16 +206,95 @@ def commonpath(paths, lower=False) -> str:
 
     for index, (path, path2) in enumerate(zip(min_splitted, max_splitted)):
         if path != path2:
-            if min_splitted[:index] == ['']:
-                return '/'
-
-            result: str = '/'.join(min_splitted[:index])
-            return result
-
+            return '/' if min_splitted[:index] == [''] else '/'.join(min_splitted[:index])
     return '/'.join(min_splitted)
 
 
-@cython.exceptval(check=False)
+# @cython.exceptval(check=False)
 @cython.ccall
-def multi_split(paths: list) -> list:
+def multi_split(paths) -> list:
     return [split(path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_normpath(paths) -> list:
+    return [normpath(path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_normcase(paths) -> list:
+    return [normcase(path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_splitdrive(paths) -> list:
+    return [splitdrive(path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_isabs(paths) -> list:
+    return [isabs(path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_join(paths) -> list:
+    return [join(*path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_splitext(paths) -> list:
+    return [splitext(path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_basename(paths) -> list:
+    return [basename(path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_dirname(paths) -> list:
+    return [dirname(path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_relpath(paths) -> list:
+    return [relpath(*path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_expanduser(paths) -> list:
+    return [expanduser(path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_ismount(paths) -> list:
+    return [ismount(path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_abspath(paths) -> list:
+    return [abspath(path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_commonprefix(paths) -> list:
+    return [commonprefix(path) for path in paths]
+
+
+# @cython.exceptval(check=False)
+@cython.ccall
+def multi_commonpath(paths) -> list:
+    return [commonpath(path) for path in paths]
