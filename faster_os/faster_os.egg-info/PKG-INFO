@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: faster-os
+Version: 0.0.1
+Summary: Up to 6700% faster OS module.
+Home-page: https://github.com/American-Best-Technologies-Company/faster-os
+Author: American Best Technologies Company
+License: MIT
+Description: Hello
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown

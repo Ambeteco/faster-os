@@ -1,0 +1,17 @@
+README.md
+faster_os.c
+pyproject.toml
+setup.py
+faster_os.egg-info/PKG-INFO
+faster_os.egg-info/SOURCES.txt
+faster_os.egg-info/dependency_links.txt
+faster_os.egg-info/requires.txt
+faster_os.egg-info/top_level.txt
+unix/__init__.py
+unix/generic.py
+unix/path.py
+win/__init__.py
+win/generic.c
+win/generic.py
+win/path.c
+win/path.py
