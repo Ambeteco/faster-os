@@ -206,7 +206,8 @@ def commonpath(paths, lower=False) -> str:
 
     for index, (path, path2) in enumerate(zip(min_splitted, max_splitted)):
         if path != path2:
-            return '/' if min_splitted[:index] == [''] else '/'.join(min_splitted[:index])
+            return '/' if min_splitted[:index] == [''] else '/'.join(
+                min_splitted[:index])
     return '/'.join(min_splitted)
 
 
