@@ -14,11 +14,11 @@ import faster_os as os
 
 At ABTco, we use Faster OS in our own projects:
 
-- **MyQuickMac Neo** - A revolutionary program for AI-powered care of your Mac - www.myquickmac.com
+- **MyQuickMac Neo** - A revolutionary program for AI-powered care of your Mac - [www.myquickmac.com](https://www.myquickmac.com)
 
-- **MyQuickMac Lite** - An innovative program for AI file management - www.myquickmac.com/lite
+- **MyQuickMac Lite** - An innovative program for AI file management - [www.myquickmac.com/lite](https://www.myquickmac.com/lite)
 
-- **4-Organizer** - A powerful program to automatically unclutter your Windows PC, powered by AI - [[www.4organizer.com](http://www.4organizer.com)]()
+- **4-Organizer** - A powerful program to automatically unclutter your Windows PC, powered by AI - [www.4organizer.com](http://www.4organizer.com)
 
 - **Wiper AI**  - under development, available soon
 
