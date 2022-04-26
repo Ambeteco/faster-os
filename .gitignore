@@ -1,3 +1,7 @@
 faster_os/
 **/*.pyd
 **/*.so
+**/*.c
+creds.json
+build.bat
+cysetup.py

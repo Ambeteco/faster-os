@@ -1,11 +1,12 @@
+import json
 import shutil
 import os
 
-username = '__token__'
-password = 'pypi-340cec51-4737-4cde-a579-0b5bb3cbb686'
+with open('creds.json') as f:
+    creds = json.load(f)
 
-username = 'abtco'
-password = 'M_K6Yf*jvcF.79n'
+username = creds['fasteros-username']
+password = creds['fasteros-password']
 
 shutil.rmtree('faster_os', ignore_errors=True)
 
