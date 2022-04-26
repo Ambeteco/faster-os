@@ -28,11 +28,10 @@ shutil.copy('unix/generic.py', 'faster_os/unix/')
 os.chdir('faster_os')
 os.system('py setup.py sdist bdist_wheel')
 
-# os.system('py -m twine upload --repository pypi dist/*')
-
-print(
-    f'py -m twine upload --repository testpypi dist/* --verbose -u "{username}" -p "{password}"'
-)
 os.system(
     f"py -m twine upload -u {username} -p {password} --repository testpypi dist/* --verbose"
 )
+
+# os.system(
+#     f"py -m twine upload -u {username} -p {password} --repository pypi dist/* --verbose"
+# )

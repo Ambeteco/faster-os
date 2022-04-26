@@ -1,3 +1,0 @@
-faster_os
-unix
-win
