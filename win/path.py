@@ -215,7 +215,7 @@ def commonprefix(paths) -> str:
     return min_path
 
 
-# @cython.exceptval(check=False)
+@cython.exceptval(check=False)
 @cython.ccall
 def commonpath(paths) -> str:
     splitted: list = [path.split('\\') for path in paths]
@@ -232,8 +232,11 @@ def commonpath(paths) -> str:
         if path != path2:
             result = '\\'.join(min_splitted[:index])
 
-            if result[-1] == ':':
-                return result + '\\'
+            try:
+                if result[-1] == ':':
+                    return result + '\\'
+            except IndexError:
+                return result
             return result
 
     return '\\'.join(min_splitted)

@@ -1,4 +1,4 @@
-# Faster OS - up to 6800% faster OS replacement!
+# Faster OS - up to 6800% faster OS module replacement!
 
 Faster OS is a drop-in replacement for Python's standard 'OS' module. Faster OS offers **32** fully-rewritten, optimized, and speeded-up functions, that replace ones in the `os.path` module. 
 
@@ -11,8 +11,6 @@ import faster_os as os
 ```
 
 ##### Save your time - use Faster OS to process millions of paths in *seconds*.
-
-
 
 At ABTco, we use Faster OS in our own projects:
 
@@ -28,11 +26,7 @@ At ABTco, we use Faster OS in our own projects:
 
 In our case, just by changing `import os` to `import faster_os as os`, Faster OS brought **35-40% speed improvements** to our programs' inner processes.
 
-
-
 ---
-
-
 
 ## Benchmarks and speed
 
@@ -48,47 +42,45 @@ The most-used functions (`split`, `join`, `splitext`) are on average **1215% fas
 
 Full benchmark results:
 
-| Function     | Paths amount | Times Faster | Faster OS time      | OS time             |
-| ------------ | ------------ | ------------ | ------------------- | ------------------- |
-| split        | 5500         | 1105%        | 0.8109837           | 0.07337720000000003 |
-| splitdrive   | 5500         | 445%         | 0.3849445           | 0.08641769999999993 |
-| normcase     | 5500         | 313%         | 0.16082829999999992 | 0.05131709999999989 |
-| splitext     | 5500         | 938%         | 0.5017187000000003  | 0.05350240000000017 |
-| join         | 5000         | 1442%        | 1.4388798           | 0.09976049999999992 |
-| relpath      | 5500         | 3653%        | 12.1418572          | 0.3323682000000012  |
-| ismount      | 5500         | 3620%        | 71.5931377          | 1.977675199999993   |
-| normpath     | 6500         | 326%         | 1.962145300000003   | 0.6026786000000044  |
-| expanduser   | 5500         | 493%         | 0.15395150000000513 | 0.03124459999999374 |
-| abspath      | 5500         | 180%         | 3.5075001000000015  | 1.9471451000000002  |
-| isabs        | 5500         | 760%         | 0.6911477000000019  | 0.0909885000000088  |
-| basename     | 5500         | 1217%        | 0.8403222000000028  | 0.0690242000000012  |
-| dirname      | 5500         | 1236%        | 0.8473003000000006  | 0.0685450000000003  |
-| commonpath   | 5000         | 738%         | 4.429664799999998   | 0.599851000000001   |
-| commonprefix | 5000         | 356%         | 0.9480839999999944  | 0.26616070000000036 |
+| Function     | Paths amount | Times Faster | Faster OS time | OS time |
+| ------------ | ------------ | ------------ | -------------- | ------- |
+| split        | 5500         | 1105%        | 0.8109         | 0.0733  |
+| splitdrive   | 5500         | 445%         | 0.3849         | 0.0864  |
+| normcase     | 5500         | 313%         | 0.1608         | 0.0513  |
+| splitext     | 5500         | 938%         | 0.5017         | 0.0535  |
+| join         | 5000         | 1442%        | 1.4388         | 0.0997  |
+| relpath      | 5500         | 3653%        | 12.1418        | 0.3323  |
+| ismount      | 5500         | 3620%        | 71.5931        | 1.9776  |
+| normpath     | 6500         | 326%         | 1.9621         | 0.6026  |
+| expanduser   | 5500         | 493%         | 0.1539         | 0.0312  |
+| abspath      | 5500         | 180%         | 3.5075         | 1.9471  |
+| isabs        | 5500         | 760%         | 0.6911         | 0.0909  |
+| basename     | 5500         | 1217%        | 0.8403         | 0.0690  |
+| dirname      | 5500         | 1236%        | 0.8473         | 0.0685  |
+| commonpath   | 5000         | 738%         | 4.4296         | 0.5998  |
+| commonprefix | 5000         | 356%         | 0.9480         | 0.2661  |
 
 Multi-functions benchmark results:
 
-| Function           | Chunks amount (each 50-100 paths) | Times Faster | Faster OS time       | OS time             |
-| ------------------ | --------------------------------- | ------------ | -------------------- | ------------------- |
-| multi_commonpath   | 1000                              | 761%         | 0.11673199999999995  | 0.8886366           |
-| multi_commonprefix | 1000                              | 435%         | 0.04917400000000005  | 0.2137264000000001  |
-| multi_abspath      | 4500                              | 195%         | 1.3105861000000005   | 2.5564814           |
-| multi_ismount      | 4500                              | 6853%        | 1.2878387999999887   | 88.25886229999999   |
-| multi_expanduser   | 4500                              | 448%         | 0.06808089999999822  | 0.30506679999999164 |
-| multi_relpath      | 1100                              | 3772%        | 0.06462209999999402  | 2.4374396000000047  |
-| multi_split        | 4500                              | 1475%        | 0.04426279999999849  | 0.6528628000000083  |
-| multi_splitdrive   | 4500                              | 628%         | 0.04761290000000429  | 0.29895400000000905 |
-| multi_normcase     | 4500                              | 451%         | 0.029892300000000205 | 0.1348015000000089  |
-| multi_normpath     | 1300                              | 362%         | 0.11940829999998925  | 0.432430399999987   |
-| multi_basename     | 4500                              | 1599%        | 0.04234699999999236  | 0.6770831000000044  |
-| multi_dirname      | 4500                              | 1644%        | 0.04189519999999902  | 0.6888534999999933  |
-| multi_isabs        | 4500                              | 1023%        | 0.05393420000000049  | 0.5514948000000004  |
-| multi_splitext     | 4500                              | 1282%        | 0.03180009999999811  | 0.4077908000000008  |
-| multi_join         | 1000                              | 1418%        | 0.02047290000000146  | 0.29022019999999316 |
+| Function           | Chunks amount (each 50-100 paths) | Times Faster | Faster OS time | OS time |
+| ------------------ | --------------------------------- | ------------ | -------------- | ------- |
+| multi_commonpath   | 1000                              | 761%         | 0.1167         | 0.8886  |
+| multi_commonprefix | 1000                              | 435%         | 0.0491         | 0.2137  |
+| multi_abspath      | 4500                              | 195%         | 1.3105         | 2.5564  |
+| multi_ismount      | 4500                              | 6853%        | 1.2878         | 88.2588 |
+| multi_expanduser   | 4500                              | 448%         | 0.0680         | 0.3050  |
+| multi_relpath      | 1100                              | 3772%        | 0.0646         | 2.4374  |
+| multi_split        | 4500                              | 1475%        | 0.0442         | 0.6528  |
+| multi_splitdrive   | 4500                              | 628%         | 0.0476         | 0.2989  |
+| multi_normcase     | 4500                              | 451%         | 0.0298         | 0.1348  |
+| multi_normpath     | 1300                              | 362%         | 0.1194         | 0.4324  |
+| multi_basename     | 4500                              | 1599%        | 0.0423         | 0.6770  |
+| multi_dirname      | 4500                              | 1644%        | 0.0418         | 0.6888  |
+| multi_isabs        | 4500                              | 1023%        | 0.0539         | 0.5514  |
+| multi_splitext     | 4500                              | 1282%        | 0.0318         | 0.4077  |
+| multi_join         | 1000                              | 1418%        | 0.0204         | 0.2902  |
 
-We recommend using `multi` functions <u>when the list has more than 250 elements.</u> For smaller lists, using `multi `functions is ineffective.
-
-
+We recommend using `multi` functions <u>when the given iterable has more than 250 elements.</u> For smaller lists, using `multi `functions is ineffective.
 
 ## Introduction / How to use
 
@@ -201,7 +193,6 @@ faster_os.multi_join([
 
 # Even further, Faster OS re-implements removedirs and adds remove_multiple_dirs
 faster_os.removedirs('C:\\This\\Path\\Will\\Be\\Deleted')
-
 ```
 
 ## Installation
@@ -218,6 +209,51 @@ faster_os.removedirs('C:\\This\\Path\\Will\\Be\\Deleted')
 
 3. Done! Verify installation: `import faster_os`
 
+---
+
+## Differences from the OS module
+
+#### Exceptions and invalid paths
+
+If given arguments are valid, than Faster OS works absolutely the same way as OS module. It means that if you use Faster OS on any valid path, **it will work exactly as OS module**. 
+
+If you will pass some invalid path as an argument to Faster OS' functions, than most of the exceptions raised by it **will not match** ones raised by the OS module. 
+
+For example, in this case, the exceptions raised by OS and Faster OS **are the same**:
+
+```python
+import os
+os.path.join('some path', None)
+>>> TypeError: join() argument must be str, bytes, or os.PathLike object, not 'NoneType'
+
+import faster_os
+faster_os.path.join('some path', None)
+>>> TypeError: sequence item 0: expected str instance, NoneType found
+```
+
+But sometimes, exceptions raised **can be different**:
+
+```python
+import os
+os.path.normcase(None)
+
+>>> TypeError: expected str, bytes or os.PathLike object, not NoneType
+
+import faster_os
+faster_os.path.normcase(None)
+>>> AttributeError: 'NoneType' object has no attribute 'replace'
+```
+
+The main reason for this, is the main goal of Faster OS: speed.
+
+Adding type and paths validity checks will significantly slow down Faster OS. Right now, **we do not plan to add any type checks, or some validation** to the Faster OS' functions. Because of this, the exceptions may be not that human-readable or easy to understand.
+
+#### Bytes support
+
+Currently, Faster OS supports only `str`. `bytes` support will be added in the next updates. Maybe, even `os.PathLike` object will be supported in the next releases.
+
+---
+
 ## Platforms
 
 - ✅ Windows
@@ -228,16 +264,296 @@ faster_os.removedirs('C:\\This\\Path\\Will\\Be\\Deleted')
 ## Requisites
 
 - Python 3
-- 64-bit
+
 - C build tools:
+  
   - For Windows: Have Visual Studio installed
   
   - For UNIX: GCC (probably already installed)
   
-  - For macOS: Have XCode CMD tools installed
+  - For macOS: Have XCode CMD tools installed (type `gcc` in the Terminal to check if it's installed)
 
 ## License
 
 Faster OS is licensed under Mozilla Public License 2.0. It means that you can use it in commercial/proprietary projects, with closed source code. You **don't need to disclose the source code.**
 
+---
 
+## Documentation
+
+We recommend to read the official OS module documentation, as all Faster OS' functions behavior are 'mirrored' from the OS functions. Below, you can find a short documentation on all Faster OS' functions.
+
+##### normpath
+
+`faster_os.path.normpath(path: str) -> str`
+
+Normalizes the path: replaces '/' to '\' on Windows (or the opposite on UNIX), and does other changes related to '.' and '..'.
+
+##### normcase
+
+`faster_os.path.normcase(path: str) -> str`
+
+Lowers the path (str.lower) and replaces '/' to '\' on Windows (or the opposite on UNIX).
+
+##### split
+
+`faster_os.path.split(path: str) -> tuple`
+
+Returns a tuple with the path splitted into directory name and base name:
+
+Example: 'some/example/path' -> ('some/example', 'path')
+
+##### splitdrive
+
+`faster_os.path.splitdrive(path: str) -> tuple`
+
+Only makes sense on Windows: splits the path into the drive and the path.
+
+Example: `'C:\\Windows' -> ('C:', '\\Windows')`
+
+##### isabs
+
+`faster_os.path.isabs(path: str) -> cython.bint`
+
+Checks if a path is absolute.
+
+Example:
+
+`'C:\\some absolute\\path' -> True`
+
+`'some\\relative\\path\\' -> False`
+
+##### join
+
+`faster_os.path.join(path: str, *paths) -> str`
+
+Joins all the given paths using platform delimiter ('/' or '\').
+
+Example:
+
+`faster_os.path.('C:\\', 'some', 'path') -> 'C:\\some\\path'`
+
+##### splitext
+
+`faster_os.path.splitext(path: str) -> tuple`
+
+Splits the path into the path and extension.
+
+Example:
+
+`'a photo.jpg' -> ('a photo', '.jpg')`
+
+##### basename
+
+`faster_os.path.basename(path: str) -> str`
+
+Returns the base name of a path.
+
+`'C:\\some absolute\\path' -> 'path'`
+
+##### dirname
+
+`faster_os.path.dirname(path: str) -> str`
+
+Returns the directory name of a path.
+
+`'C:\\some absolute\\path' -> 'C:\\some absolute\\'`
+
+##### ismount
+
+`faster_os.path.ismount(path: str) -> cython.bint`
+
+Checks if a path is a mounting point.
+
+##### expanduser
+
+`faster_os.path.expanduser(path: str) -> str`
+
+Expands the '~' into the user profile or home path.
+
+Example:
+
+```python
+'~Desktop' -> 'C:\\Users\\Desktop
+'~\\Desktop' -> 'C:\\Users\\User\\Desktop
+  ^^ notice this slash
+```
+
+##### relpath
+
+`faster_os.path.relpath(tail: str, root=None) -> str`
+
+Computes the relative path of tail depanding on the root.
+
+If root is None, it's assigned to current working directory.
+
+##### commonprefix
+
+`faster_os.path.commonprefix(paths) -> str`
+
+Finds the common prefix of given paths.
+
+Example:
+
+`['faster_os/abc', 'faster_os/abcde', 'faster_os/abc123'] -> 'faster_os/abc'`
+
+##### commonpath
+
+`faster_os.path.commonpath(paths) -> str`
+
+Finds the common path of given paths.
+
+Contraty to commonprefix, finds the full path.
+
+Example:
+
+`['faster_os/abc', 'faster_os/abcde', 'faster_os/abc123'] -> 'faster_os'`
+
+##### abspath
+
+`faster_os.path.abspath(path: str) -> str`
+
+Tries to get absolute path using the operating system's API, or falls back to joining the path with CWD.
+
+##### multi_split
+
+`faster_os.path.multi_split(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies split to each element.
+
+Returns a list.
+
+##### multi_normpath
+
+`faster_os.path.multi_normpath(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies normpath to each element.
+
+Returns a list.
+
+##### multi_normcase
+
+`faster_os.path.multi_normcase(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies normcase to each element.
+
+Returns a list.
+
+##### multi_splitdrive
+
+`faster_os.path.multi_splitdrive(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies splitdrive to each element.
+
+Returns a list.
+
+##### multi_isabs
+
+`faster_os.path.multi_isabs(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies isabs to each element.
+
+Returns a list.
+
+##### multi_join
+
+`faster_os.path.multi_join(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies join to each element.
+
+Returns a list.
+
+##### multi_splitext
+
+`faster_os.path.multi_splitext(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies splitext to each element.
+
+Returns a list.
+
+##### multi_basename
+
+`faster_os.path.multi_basename(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies basename to each element.
+
+Returns a list.
+
+##### multi_dirname
+
+`faster_os.path.multi_dirname(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies dirname to each element.
+
+Returns a list.
+
+##### multi_relpath
+
+`faster_os.path.multi_relpath(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies relpath to each element.
+
+Returns a list.
+
+##### multi_expanduser
+
+`faster_os.path.multi_expanduser(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies expanduser to each element.
+
+Returns a list.
+
+##### multi_ismount
+
+`faster_os.path.multi_ismount(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies ismount to each element.
+
+Returns a list.
+
+##### multi_abspath
+
+`faster_os.path.multi_abspath(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies abspath to each element.
+
+Returns a list.
+
+##### multi_commonprefix
+
+`faster_os.path.multi_commonprefix(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies commonprefix to each element.
+
+Returns a list.
+
+##### multi_commonpath
+
+`faster_os.path.multi_commonpath(paths) -> list`
+
+Takes any iterable (list, tuple, etc) and applies commonpath to each element.
+
+Returns a list.
+
+##### removedirs
+
+`faster_os.removedirs(path) -> None`
+
+Deletes all the path components until the exception is raised.
+
+`removedirs` will try to delete each directory until the error is raised, for example a directory is not empty or there's a permission error:
+For example:
+
+```python
+Given path "C:\Users\User\Desktop\many\folders\here"
+Delete "C:\Users\User\Desktop\many\folders\here"
+Delete "C:\Users\User\Desktop\many\folders"
+Delete "C:\Users\User\Desktop\many"
+Delete "C:\Users\User\Desktop\" -> ERROR - return
+```
+
+##### remove_multiple_dirs
+
+`faster_os.remove_multiple_dirs(paths) -> None`
+
+Takes any iterable (list, tuple, etc) and applies `removedirs` to each element.

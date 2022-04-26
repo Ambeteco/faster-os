@@ -24,11 +24,11 @@ with open("README.md", encoding='utf8') as file:
 
 setup(
     name="faster-os",
-    version="0.0.3",
+    version="0.0.4",
     packages=find_packages(),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
-        "OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3.8",
@@ -57,5 +57,19 @@ setup(
     long_description_content_type='text/markdown',
     url="https://github.com/American-Best-Technologies-Company/faster-os",
     ext_modules=ext_modules,
-    install_requires=['Cython>=3.0.0a9'],
+    install_requires=['Cython>=3.0.0a10'],
 )
+"""
+faster-than
+os
+optimized
+speedup
+speededup
+faster
+path
+file
+directory
+paths manipulations
+files processing
+data processing
+"""
