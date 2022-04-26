@@ -9,6 +9,6 @@ release = os.path.join(os.getcwd(), 'build', release_name, 'FasterOS')
 print(release, os.getcwd())
 shutil.copytree(release, os.getcwd(), dirs_exist_ok=True)
 
-os.system('del unix\*.c /q')
-os.system('del win\*.c /q')
+os.system('del unix\\*.c /q')
+os.system('del win\\*.c /q')
 os.system('rd /s /q build')

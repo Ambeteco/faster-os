@@ -1,5 +1,4 @@
 import timeit
-import os
 
 
 def test_funcs_pair(pair, number=100):

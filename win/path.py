@@ -146,11 +146,7 @@ def dirname(path: str) -> str:
 # @cython.exceptval(check=False)
 @cython.ccall
 def ismount(path: str) -> cython.bint:
-    rest: str
-    root: str
-
     path = abspath(path)
-
     return len(path) == 2 and path[1] == ':'
 
 

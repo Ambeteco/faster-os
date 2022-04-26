@@ -169,7 +169,7 @@ def multi_base_test(os_func, faster_os_func, paths, unpack=False):
             print(f'\ntype: {type(os_func_result)}')
             print(f'type: {type(faster_os_func_result)}\n\n')
 
-        print(f'Failed test.')
+        print('Failed test.')
         return False
 
     print('Successfully passed this test.')
