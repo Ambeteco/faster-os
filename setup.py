@@ -24,11 +24,11 @@ with open("README.md", encoding='utf8') as file:
 
 setup(
     name="faster-os",
-    version="0.0.2",
+    version="0.0.3",
     packages=find_packages(),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
-        "License :: OSI Approved :: MIT License",
+        "OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3.8",
@@ -43,7 +43,7 @@ setup(
         'Topic :: System :: Operating System',
         'Topic :: Utilities',
     ],
-    license="MIT",
+    license="MPL 2.0",
     author_email='contact@abtco.us',
     author="American Best Technologies Company",
     description="Up to 6700% faster OS module.",
