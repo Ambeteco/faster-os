@@ -22,6 +22,4 @@ ext_modules = cythonize(
     },
 )
 
-setup(
-    ext_modules=ext_modules,
-)
+setup(ext_modules=ext_modules, )
