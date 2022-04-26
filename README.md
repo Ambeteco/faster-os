@@ -80,7 +80,7 @@ Multi-functions benchmark results:
 | multi_splitext     | 4500                              | 1282%        | 0.0318         | 0.4077  |
 | multi_join         | 1000                              | 1418%        | 0.0204         | 0.2902  |
 
-We recommend using `multi` functions <u>when the given iterable has more than 250 elements.</u> For smaller lists, using `multi `functions is ineffective.
+We recommend using `multi-functions` <u>when the given iterable has more than 250 elements.</u> For smaller lists, using `multi-functions` is ineffective.
 
 ## Introduction / How to use
 
@@ -215,9 +215,9 @@ faster_os.removedirs('C:\\This\\Path\\Will\\Be\\Deleted')
 
 #### Exceptions and invalid paths
 
-If given arguments are valid, than Faster OS works absolutely the same way as OS module. It means that if you use Faster OS on any valid path, **it will work exactly as OS module**. 
+If the given arguments are valid then Faster OS works absolutely the same way as the OS module. It means that if you use Faster OS on any valid path, **it will work exactly like the OS module**. 
 
-If you will pass some invalid path as an argument to Faster OS' functions, than most of the exceptions raised by it **will not match** ones raised by the OS module. 
+If you will pass some invalid path as an argument to Faster OS' functions, then most of the exceptions raised by it **will not match** the ones raised by the OS module. 
 
 For example, in this case, the exceptions raised by OS and Faster OS **are the same**:
 
@@ -244,9 +244,9 @@ faster_os.path.normcase(None)
 >>> AttributeError: 'NoneType' object has no attribute 'replace'
 ```
 
-The main reason for this, is the main goal of Faster OS: speed.
+The main reason for this is the main goal of Faster OS: speed.
 
-Adding type and paths validity checks will significantly slow down Faster OS. Right now, **we do not plan to add any type checks, or some validation** to the Faster OS' functions. Because of this, the exceptions may be not that human-readable or easy to understand.
+Adding type and paths validity checks will significantly slow down Faster OS. Right now, **we do not plan to add any type checks or some validation** to the Faster OS functions. Because of this, the exceptions might be not that human-readable or easy to understand.
 
 #### Bytes support
 
@@ -281,7 +281,7 @@ Faster OS is licensed under Mozilla Public License 2.0. It means that you can us
 
 ## Documentation
 
-We recommend to read the official OS module documentation, as all Faster OS' functions behavior are 'mirrored' from the OS functions. Below, you can find a short documentation on all Faster OS' functions.
+We recommend reading the [official OS module documentation](https://docs.python.org/3/library/os.path.html), as all Faster OS functions' behavior is 'mirrored' from the OS functions. Below, you can find short documentation on all Faster OS functions.
 
 ##### normpath
 
@@ -293,7 +293,7 @@ Normalizes the path: replaces '/' to '\' on Windows (or the opposite on UNIX), a
 
 `faster_os.path.normcase(path: str) -> str`
 
-Lowers the path (str.lower) and replaces '/' to '\' on Windows (or the opposite on UNIX).
+Lowers the path (`str.lower`) and replaces '/' to '\' on Windows (or the opposite on UNIX).
 
 ##### split
 
@@ -383,9 +383,9 @@ Example:
 
 `faster_os.path.relpath(tail: str, root=None) -> str`
 
-Computes the relative path of tail depanding on the root.
+Computes the relative path of the `tail` depending on the `root`.
 
-If root is None, it's assigned to current working directory.
+If `root` is None, then it's assigned to the current working directory `os.getcwd()`.
 
 ##### commonprefix
 
@@ -413,7 +413,7 @@ Example:
 
 `faster_os.path.abspath(path: str) -> str`
 
-Tries to get absolute path using the operating system's API, or falls back to joining the path with CWD.
+Tries to get the absolute path using the operating system's API, or falls back to joining the path with CWD.
 
 ##### multi_split
 
@@ -541,7 +541,7 @@ Returns a list.
 
 Deletes all the path components until the exception is raised.
 
-`removedirs` will try to delete each directory until the error is raised, for example a directory is not empty or there's a permission error:
+`removedirs` will try to delete each directory until the error is raised, for example, a directory is not empty or there's a permission error:
 For example:
 
 ```python

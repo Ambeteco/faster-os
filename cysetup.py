@@ -1,3 +1,4 @@
+import os
 from setuptools import setup
 from Cython.Build import cythonize
 import platform
@@ -11,6 +12,8 @@ pyx_paths = [
     "unix/path.py",
     "unix/generic.py",
 ]
+
+pyx_paths = [os.path.join(os.getcwd(), i) for i in pyx_paths]
 
 ext_modules = cythonize(
     pyx_paths,
