@@ -5,3 +5,4 @@ faster_os/
 creds.json
 build.bat
 cysetup.py
+build/
