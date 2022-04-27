@@ -1,0 +1,4 @@
+recursive-include . *.c
+recursive-include . *.py
+include faster_os.py
+include faster_os.c
