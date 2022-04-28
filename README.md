@@ -1,6 +1,8 @@
 # Faster OS - up to 6800% faster OS module replacement!
 [![Downloads](https://static.pepy.tech/personalized-badge/faster-os?period=total&units=international_system&left_color=black&right_color=blue&left_text=Total%20Downloads)](https://pepy.tech/project/faster-os)
 [![DeepSource](https://deepsource.io/gh/American-Best-Technologies-Company/faster-os.svg/?label=resolved+issues&show_trend=true&token=3oNMhJxubBfnHF2qYXh5tJZ5)](https://deepsource.io/gh/American-Best-Technologies-Company/faster-os/?ref=repository-badge)
+
+![PyPI - Downloads](https://img.shields.io/pypi/dm/faster-os?color=blue&style=for-the-badge)
 ![Lines of code](https://img.shields.io/tokei/lines/github/American-Best-Technologies-Company/faster-os?style=for-the-badge)
 
 Faster OS is a drop-in replacement for Python's standard 'OS' module. Faster OS offers **32** fully-rewritten, optimized, and speeded-up functions, that replace ones in the `os.path` module. 
