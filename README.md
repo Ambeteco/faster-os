@@ -1,6 +1,5 @@
 # Faster OS - up to 6800% faster OS module replacement!
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/faster-os?color=blue&style=for-the-badge)
-![Lines of code](https://img.shields.io/tokei/lines/github/American-Best-Technologies-Company/faster-os?style=for-the-badge)
 ![PyPI - License](https://img.shields.io/pypi/l/faster-os?color=blue&style=for-the-badge)
 ![PyPI](https://img.shields.io/pypi/v/faster-os?color=blue&style=for-the-badge)
 ![PyPI - Status](https://img.shields.io/pypi/status/faster-os?style=for-the-badge)
