@@ -1,4 +1,5 @@
 # Faster OS - up to 6800% faster OS module replacement!
+
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/faster-os?color=blue&style=for-the-badge)
 ![PyPI - License](https://img.shields.io/pypi/l/faster-os?color=blue&style=for-the-badge)
 ![PyPI](https://img.shields.io/pypi/v/faster-os?color=blue&style=for-the-badge)
@@ -17,6 +18,10 @@ import faster_os as os
 ```
 
 ##### Save your time - use Faster OS to process millions of paths in *seconds*.
+
+Fast. Optimized. Has 0 Dependencies. Light.
+
+---
 
 At ABTco, we use Faster OS in our own projects:
 
