@@ -2,7 +2,7 @@
 name: Question
 about: Ask a question
 title: '[QUESTION]'
-labels: ''
+labels: 'question'
 assignees: 'Dsibe'
 
 ---
