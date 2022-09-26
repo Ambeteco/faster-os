@@ -53,7 +53,7 @@ The most-used functions (`split`, `join`, `splitext`) are on average **1215% fas
 
 Full benchmark results:
 
-| Function     | Paths amount | Times Faster | Faster OS time | OS time |
+| Function     | Paths amount | Times Faster |        OS time | Faster OS time |
 | ------------ | ------------ | ------------ | -------------- | ------- |
 | split        | 5500         | 1105%        | 0.8109         | 0.0733  |
 | splitdrive   | 5500         | 445%         | 0.3849         | 0.0864  |
