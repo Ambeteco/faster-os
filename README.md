@@ -23,19 +23,19 @@ Fast. Optimized. Has 0 Dependencies. Light.
 
 ---
 
-At ABTco, we use Faster OS in our own projects:
+Faster OS is used in:
 
-- **MyQuickMac Neo** - A revolutionary program for AI-powered care of your Mac - [www.myquickmac.com](https://www.myquickmac.com)
+- **MyQuickMac Neo** - A revolutionary program for AI-powered care of your Mac - [www.ambeteco.com/MyQuickMac-Neo](https://www.ambeteco.com/MyQuickMac-Neo/)
 
-- **MyQuickMac Lite** - An innovative program for AI file management - [www.myquickmac.com/lite](https://www.myquickmac.com/lite)
+- **MyQuickMac Lite** - An innovative program for AI file management - [www.ambeteco.com/MyQuickMac-Lite](https://www.ambeteco.com/MyQuickMac-Lite/)
 
-- **4-Organizer** - A powerful program to automatically unclutter your Windows PC, powered by AI - [www.4organizer.com](http://www.4organizer.com)
+- **4-Organizer Ultra** - A powerful program to automatically unclutter your Windows PC, powered by AI - [www.ambeteco.com/4-Organizer-Ultra](https://www.ambeteco.com/4-Organizer-Ultra/)
+
+- **4-Organizer Nano** - Automatically tidies-up your PC and puts an end to the infinite chaos of files - [www.ambeteco.com/4-Organizer-Nano](https://www.ambeteco.com/4-Organizer-Nano/)
 
 - **Wiper AI**  - under development, available soon
 
-**It means that Faster OS is a stable, production-ready tool.** 
-
-In our case, just by changing `import os` to `import faster_os as os`, Faster OS brought **35-40% speed improvements** to our programs' inner processes.
+**Faster OS is a stable, production-ready tool.** 
 
 ---
 
